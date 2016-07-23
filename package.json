@@ -1,0 +1,25 @@
+{
+  "name": "nfp",
+  "version": "1.0.0",
+  "description": "application used for free finding parking lots",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/schinalex/ChisinauSCH.git"
+  },
+  "keywords": [
+    "parking"
+  ],
+  "author": "we",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/schinalex/ChisinauSCH/issues"
+  },
+  "homepage": "https://github.com/schinalex/ChisinauSCH#readme",
+  "dependencies": {
+    "express": "^4.14.0"
+  }
+}
