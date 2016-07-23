@@ -12,6 +12,7 @@
     lat: Number,
     long: Number,
     imgs: [],
+    freesSlots: Number,
     id: Number
   });
 
