@@ -4,7 +4,14 @@
     Parking = require('../models/parking'),
     assert = require('assert');
 
-  router.get('/', (req, res) => {
+  router.get('/getAllParkings', (req, res) => {
+    Parking.find({}, (err, doc) => {
+      if (err) {
+        res.json(err);
+      } else {
+        res.json(doc);
+      }
+    });
 
   });
 
@@ -53,7 +60,11 @@
   });
 
   router.delete('/:id', (req, res) => {
-
+    let id = req.params.id;
+    Parking.remove({id: id}, (err, doc) => {
+      console.log(doc);
+    });
+    res.send('Deleted! ID: ' + id)
   });
 
 

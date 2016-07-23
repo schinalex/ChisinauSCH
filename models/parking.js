@@ -11,8 +11,8 @@
     slots: Number,
     lat: Number,
     long: Number,
-    imgs: [],
-    freesSlots: Number,
+    img: String,
+    freeSlots: Number,
     id: Number
   });
 
