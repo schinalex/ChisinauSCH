@@ -4,10 +4,7 @@
     Parking = require('../models/parking'),
     assert = require('assert');
 
-<<<<<<< HEAD
-  router.get('/', (req, res) => {
-    console.log("hello world from home route");
-=======
+
   router.get('/getAllParkings', (req, res) => {
     Parking.find({}, (err, doc) => {
       if (err) {
@@ -16,8 +13,6 @@
         res.json(doc);
       }
     });
-
->>>>>>> 14f5b6cd16d2c850eb12e294c076f9e7ae4d6aa2
   });
 
   router.get('/:id', (req, res) => {
@@ -52,35 +47,38 @@
 
   var time1 = 0;
   var time2 = 0;
-  router.put('/changeSlots', (req, res) => {
-    let id = req.params.id;
-    let park = req.params.park;
-    if(id == 1) time1 = Date();
-    if(id == 2) time2 = Date();
+  router.post('/changeSlots', (req, res) => {
+    console.log(req.body);
+    let id = req.body.id;
+    let park = req.body.park;
+    let sent = false
+    if(id == 1) time1 = Date.now();
+    if(id == 2) time2 = Date.now();
+    console.log(time1)
+    console.log(time2)
     if(time1 != 0 && time2 != 0){
+      sent = true
       if(time1 < time2) {
         Parking.update({
           id: park
         }, {
-          "$dec": {"freeSlots": 1}
-          time1 = 0;
-          time2 = 0;
+          "$inc": {"freeSlots": -1}
         }, (err, doc) => {
           res.json({success: true});
         });
       } else {
         Parking.update({
-        id: park
-      }, {
-        "$inc": {"freeSlots": 1}
-        time1 = 0;
-        time2 = 0;
-      }, (err, doc) => {
-        res.json({success: true});
-      });
-            }
-        }
-
+          id: park
+        }, {
+          "$inc": {"freeSlots": 1}
+        }, (err, doc) => {
+          res.json({success: true});
+        });
+      }
+      time1 = 0;
+      time2 = 0;
+    }
+    if (!sent) res.json({message: 'recieved'});
   });
 
   router.delete('/:id', (req, res) => {
