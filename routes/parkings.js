@@ -32,10 +32,7 @@
 
   // create
   router.post('/', (req, res) => {
-    console.log('got a post')
     let parking = req.body;
-    // grab the parking model
-    let Parking = require('../models/parking');
 
     // create a new user
     var newParking = Parking(parking);
@@ -64,7 +61,7 @@
     Parking.remove({id: id}, (err, doc) => {
       console.log(doc);
     });
-    res.send('Deleted! ID: ' + id)
+    res.json({success: true, id: id})
   });
 
 
