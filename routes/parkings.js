@@ -25,7 +25,20 @@
 
   // create
   router.post('/', (req, res) => {
-    let parking = req.query || req.params;
+    console.log('got a post')
+    let parking = req.body;
+    // grab the parking model
+    let Parking = require('../models/parking');
+
+    // create a new user
+    var newParking = Parking(parking);
+
+    // save the user
+    newParking.save(function(err) {
+      if (err) throw err;
+      console.log('Parking created!');
+    });
+    res.send({message: 'parking created'});
   });
 
   router.put('/:id', (req, res) => {
