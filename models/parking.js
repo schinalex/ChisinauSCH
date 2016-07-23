@@ -11,7 +11,11 @@
     slots: Number,
     lat: Number,
     long: Number,
+<<<<<<< HEAD
+    imgs: [],
+=======
     img: String,
+>>>>>>> 14f5b6cd16d2c850eb12e294c076f9e7ae4d6aa2
     freeSlots: Number,
     id: Number
   });
